@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import {createContext, useState, useEffect} from 'react';
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
@@ -11,12 +11,12 @@ export const UserContext = createContext({
   setCurrentUser: () => null,
 });
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const value = { currentUser, setCurrentUser };
+  const value = {currentUser, setCurrentUser};
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
+    const unsubscribe = onAuthStateChangedListener(user => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
